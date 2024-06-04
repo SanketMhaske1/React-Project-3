@@ -14,7 +14,7 @@ const App = () => {
         const res = await fetch(apiUrl);
         const data = await res.json();
         setCourses(data.data);
-        console.log(data.data);
+        toast.success("Load Data");
       } catch (error) {
         toast.error("Not Able To Load Data");
       }
