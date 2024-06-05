@@ -1,13 +1,14 @@
-import { FcLike } from "react-icons/fc";
+import { FcLike, FcLikePlaceholder } from "react-icons/fc";
 import { toast } from "react-toastify";
 function Card(props) {
   let item = props.item;
   let likeCourses = props.likeCourses;
   let setLikeCourses = props.setLikeCourses;
+
   function clickHandler() {
     if (likeCourses.includes(item.id)) {
-      setLikeCourses((perv) => {
-        perv.filter(perv.id !== item.id);
+      setLikeCourses((prev) => {
+        return prev.filter((courseId) => courseId !== item.id);
       });
       toast.warning("Like Removed");
     } else {
@@ -27,7 +28,11 @@ function Card(props) {
 
         <div className="w-[40px] h-[40px] bg-white rounded-full absolute right-2 bottom-3 grid place-items-center">
           <button onClick={clickHandler}>
-            <FcLike fontSize="1.75em"></FcLike>
+            {likeCourses.includes(item.id) ? (
+              <FcLike fontSize="1.75em"></FcLike>
+            ) : (
+              <FcLikePlaceholder fontSize="1.75em"></FcLikePlaceholder>
+            )}
           </button>
         </div>
       </div>
