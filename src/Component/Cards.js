@@ -1,18 +1,24 @@
 import { useState } from "react";
 import Card from "./Card";
 
-function Cards({ courses }) {
+function Cards(props) {
   const [likeCourses, setLikeCourses] = useState([]);
+  let courses = props.courses;
+  let category = props.category;
 
-  const getCourses = () => {
-    let allCourses = [];
-    Object.values(courses).forEach((coursesCategory) => {
-      coursesCategory.forEach((item) => {
-        allCourses.push(item);
+  function getCourses() {
+    if (category === "All") {
+      let allCourses = [];
+      Object.values(courses).forEach((coursesCategory) => {
+        coursesCategory.forEach((item) => {
+          allCourses.push(item);
+        });
       });
-    });
-    return allCourses;
-  };
+      return allCourses;
+    } else {
+      return courses[category];
+    }
+  }
 
   return (
     <div className="flex flex-wrap justify-center gap-4 mb-4">

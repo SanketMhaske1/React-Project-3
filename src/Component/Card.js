@@ -41,7 +41,11 @@ function Card(props) {
         <p className="text-white font-semibold text-lg leading-6">
           {item.title}
         </p>
-        <p className="text-white mt-2 ">{item.description}</p>
+        <p className="text-white mt-2 ">
+          {item.description.length > 100
+            ? `${item.description.substr(0, 100)}...`
+            : item.description}
+        </p>
       </div>
     </div>
   );
