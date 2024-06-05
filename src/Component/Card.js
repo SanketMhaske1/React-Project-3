@@ -26,7 +26,7 @@ function Card(props) {
       <div className="relative">
         <img src={item.image.url}></img>
 
-        <div className="w-[40px] h-[40px] bg-white rounded-full absolute right-2 bottom-3 grid place-items-center">
+        <div className="w-[40px] h-[40px] bg-white rounded-full absolute right-2 bottom-[-15px] grid place-items-center">
           <button onClick={clickHandler}>
             {likeCourses.includes(item.id) ? (
               <FcLike fontSize="1.75em"></FcLike>
